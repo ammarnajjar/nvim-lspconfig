@@ -189,6 +189,7 @@ function configs.__newindex(t, config_name, config_def)
 
   function M._setup_buffer(client_id, bufnr)
     local client = lsp.get_client_by_id(client_id)
+    if client == nil then return end
     if client.config._on_attach then
       client.config._on_attach(client, bufnr)
     end
